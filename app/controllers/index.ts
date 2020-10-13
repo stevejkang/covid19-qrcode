@@ -1,1 +1,1 @@
-export * from './welcome.controller';
+export * from './qr.controller';
