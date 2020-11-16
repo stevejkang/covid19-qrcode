@@ -44,8 +44,22 @@
   $ npm run build
   ```
 
-  3. `<YOUR_HOST>:3000/qr`을 iOS Shotcuts 앱에 등록합니다.
-  <!--여기서는 서버에 설치하여 API 서버를 띄우고, 이를 iOS 단축어 앱에서 호출하는 방법(iOS 14 백탭 활용)을 설명합니다-->
+  3. `<YOUR_HOST>:3000/qr`을 iOS Shotcuts 앱에 등록합니다. (템플릿으로 [바로 시작하기](https://www.icloud.com/shortcuts/dd2a9958597b4a6095dce4ac4e0247f7))
+
+  <img src="https://imgur.com/bf7nfmO.png" width="224" height="480"/><br/>
+
+  iOS 14부터 지원하는 위젯으로 만들어 사용하면 아래처럼 홈 화면에서 바로 QR 코드를 얻을 수 있습니다.
+
+  ![Giphy](https://media.giphy.com/media/Pij6wCRRInlq0dMOGQ/giphy.gif)
+
+## Troubleshooting
+
+- `...chrome-linux/chrome: error while loading shared libraries: xxxxxxx.so: cannot open shared object file: No such file or directory` on AWS EC2 ubuntu
+
+  ```bash
+  $ sudo apt-get install gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm-dev libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget
+  ```
+  Reference [here](https://techoverflow.net/2018/06/05/how-to-fix-puppetteer-error-while-loading-shared-libraries-libx11-xcb-so-1-cannot-open-shared-object-file-no-such-file-or-directory/)
 
 ## License
 
