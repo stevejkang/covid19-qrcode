@@ -57,6 +57,8 @@ export async function getQrCode(
 
   const qrImage = qrImageElement ? await qrImageElement.screenshot({ encoding: "base64" }) : null;
 
+  await browser.close();
+
   return {
     isSuccess: !!qrImage,
     result: !!qrImage ? qrImage : 'Unknown Error',
