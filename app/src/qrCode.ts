@@ -31,6 +31,8 @@ export async function getQrCode(
   await page.click('.btn_global');
   await page.waitForNavigation();
 
+  // TODO: Login Exception (incorrect password or captcha)
+
   await page.goto('https://nid.naver.com/login/privacyQR?term=on');
 
   const actionRequiredTextElement = await page.$("#content > .top_copy > .title");
