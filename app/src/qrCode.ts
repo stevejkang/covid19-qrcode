@@ -13,9 +13,9 @@ export interface IQrResult {
 const MOBILE_VERIFICATION_REQUIRED = '네이버 휴대전화 인증';
 const POLICY_AGREEMENT_REQUIRED = '집합시설 출입을 위한 QR 체크인';
 
-export const getQrCode = async (
+export async function getQrCode(
   credential: INaverCredential,
-) => {
+ ): Promise<IQrResult> {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   const page = await browser.newPage();
 
@@ -43,7 +43,7 @@ export const getQrCode = async (
       });
       await page.waitForNavigation();
     } else if (actionRequiredText === MOBILE_VERIFICATION_REQUIRED) {
-      return <IQrResult> {
+      return {
         isSuccess: false,
         result: 'Mobile Verification Is Required. Check Via Browser.',
       };
@@ -55,7 +55,7 @@ export const getQrCode = async (
 
   const qrImage = qrImageElement ? await qrImageElement.screenshot({ encoding: "base64" }) : null;
 
-  return <IQrResult> {
+  return {
     isSuccess: !!qrImage,
     result: !!qrImage ? qrImage : 'Unknown Error',
   };
