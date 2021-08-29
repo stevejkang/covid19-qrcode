@@ -21,14 +21,14 @@ export async function getQrCode(
 
   const { id, password } = credential;
 
-  await page.goto('https://nid.naver.com/nidlogin.login');
+  await page.goto('https://nid.naver.com/nidlogin.login?mode=form');
 
   await page.evaluate((id: string, password: string) => {
     (<HTMLInputElement>document.querySelector('#id')).value = id;
     (<HTMLInputElement>document.querySelector('#pw')).value = password;
   }, id, password);
 
-  await page.click('.btn_global');
+  await page.click('.btn_login');
   await page.waitForNavigation();
 
   // TODO: Login Exception (incorrect password or captcha)
