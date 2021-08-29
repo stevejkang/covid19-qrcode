@@ -31,7 +31,12 @@ export async function getQrCode(
   await page.click('.btn_login');
   await page.waitForNavigation();
 
-  // TODO: Login Exception (incorrect password or captcha)
+  if (page.url().indexOf('nidlogin.login') !== -1) {
+    return {
+      isSuccess: false,
+      result: 'Login has failed.',
+    };
+  }
 
   await page.goto('https://nid.naver.com/login/privacyQR?term=on');
 
