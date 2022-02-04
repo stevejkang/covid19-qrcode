@@ -32,6 +32,7 @@ export async function getQrCode(
   await page.waitForNavigation();
 
   if (page.url().indexOf('nidlogin.login') !== -1) {
+    await browser.close();
     return {
       isSuccess: false,
       result: 'Login has failed.',
@@ -50,6 +51,7 @@ export async function getQrCode(
       });
       await page.waitForNavigation();
     } else if (actionRequiredText === MOBILE_VERIFICATION_REQUIRED) {
+      await browser.close();
       return {
         isSuccess: false,
         result: 'Mobile Verification Is Required. Check Via Browser.',
